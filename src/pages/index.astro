@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../../astro.config.mjs';
+
+// 초안(draft:true)은 목록에서 제외하고 최신순 정렬
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={SITE.title} description={SITE.description}>
+  <h1>{SITE.title}</h1>
+  <p>{SITE.description}</p>
+
+  {posts.length === 0 && <p>아직 발행된 글이 없습니다. <code>npm run new</code> 로 첫 글을 만드세요.</p>}
+
+  <ul style="list-style:none; padding:0;">
+    {
+      posts.map((post) => (
+        <li style="margin-bottom:1.5rem;">
+          <a href={`/posts/${post.id}/`} style="font-size:1.15rem; font-weight:600;">
+            {post.data.title}
+          </a>
+          <div style="color:var(--muted); font-size:.9rem;">
+            <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+          </div>
+          <p style="margin:.25rem 0 0;">{post.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

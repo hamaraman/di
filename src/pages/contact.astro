@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../../astro.config.mjs';
+
+// TODO: 실제 연락 이메일로 교체하세요.
+const EMAIL = 'your-email@example.com';
+---
+
+<BaseLayout
+  title="문의"
+  description={`${SITE.title}에 광고·제휴·오류 제보 등 문의가 있으시면 이메일로 연락 주세요.`}
+>
+  <article>
+    <h1>문의</h1>
+    <p>
+      내용 오류 제보, 광고·제휴 제안, 기타 문의는 아래 이메일로 보내주세요. 확인 후
+      회신드리겠습니다.
+    </p>
+    <p>
+      이메일: <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+    </p>
+  </article>
+</BaseLayout>

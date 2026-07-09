@@ -1,0 +1,132 @@
+---
+import { SITE } from '../../astro.config.mjs';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 글 상세일 때만: 발행/수정일, OG 타입을 article 로 */
+  pubDate?: Date;
+  updatedDate?: Date;
+  type?: 'website' | 'article';
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  type = 'website',
+  tags = [],
+} = Astro.props;
+
+// canonical URL — 중복 콘텐츠 방지, 구글/네이버 모두 중요
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+const fullTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
+
+// 구조화 데이터 (JSON-LD) — 구글 리치 결과에 반영
+const jsonLd =
+  type === 'article'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        description,
+        datePublished: pubDate?.toISOString(),
+        dateModified: (updatedDate ?? pubDate)?.toISOString(),
+        author: { '@type': 'Person', name: SITE.author },
+        keywords: tags.join(', '),
+        mainEntityOfPage: canonical,
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE.title,
+        description: SITE.description,
+        url: SITE.url,
+      };
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- 네이버 서치어드바이저 / 구글 서치콘솔 소유확인용. 발급받은 값으로 교체 -->
+    <!-- <meta name="naver-site-verification" content="여기에_네이버_인증코드" /> -->
+    <!-- <meta name="google-site-verification" content="여기에_구글_인증코드" /> -->
+
+    <!-- Open Graph (카카오톡·페이스북·네이버 공유 미리보기) -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content="ko_KR" />
+
+    <!-- Twitter/X 카드 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.title}
+      href="/rss.xml"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <header>
+      <a href="/" class="site-title">{SITE.title}</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <nav class="footer-nav">
+        <a href="/about/">소개</a>
+        <a href="/contact/">문의</a>
+        <a href="/privacy/">개인정보처리방침</a>
+      </nav>
+      <p>© {new Date().getFullYear()} {SITE.author}</p>
+    </footer>
+
+    <style is:global>
+      :root {
+        --w: 720px;
+        --fg: #1a1a1a;
+        --muted: #666;
+        --accent: #2563eb;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, 'Segoe UI', 'Malgun Gothic', sans-serif;
+        color: var(--fg);
+        line-height: 1.7;
+      }
+      header, main, footer { max-width: var(--w); margin: 0 auto; padding: 1rem; }
+      header { border-bottom: 1px solid #eee; }
+      .site-title { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--fg); }
+      main { padding-block: 2rem; }
+      a { color: var(--accent); }
+      h1 { line-height: 1.3; }
+      article :is(h2, h3) { margin-top: 2rem; }
+      footer { color: var(--muted); border-top: 1px solid #eee; font-size: .9rem; }
+      .footer-nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .5rem; }
+      @media (prefers-color-scheme: dark) {
+        :root { --fg: #eaeaea; --muted: #999; --accent: #6ea8fe; }
+        body { background: #121212; }
+        header, footer { border-color: #2a2a2a; }
+      }
+    </style>
+  </body>
+</html>
