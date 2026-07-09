@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // TODO: url 은 도메인 확정 후 교체. sitemap / canonical / RSS 가 이 값을 씁니다.
 export const SITE = {
-  url: 'https://example.com',
+  url: 'https://di-cnv.pages.dev',
   title: '디지털 꿀팁 노트',
   description: '엑셀·윈도우·스마트폰 사용법과 오류 해결을 쉽고 빠르게 정리하는 IT 활용 블로그',
   author: '디지털 꿀팁 노트',
