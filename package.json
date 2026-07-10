@@ -13,8 +13,11 @@
     "gemini": "gemini --skip-trust -p"
   },
   "dependencies": {
-    "astro": "^5.13.0",
+    "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
-    "@astrojs/rss": "^4.0.11"
+    "@fontsource/noto-sans-kr": "^5.2.9",
+    "astro": "^5.13.0",
+    "astro-og-canvas": "^0.13.0",
+    "canvaskit-wasm": "^0.41.1"
   }
 }

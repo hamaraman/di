@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="디지털 꿀팁 노트">
+  <rect width="32" height="32" rx="7" fill="#2563eb"/>
+  <!-- 전구(팁·아이디어) 심볼 -->
+  <path d="M16 6.5a6.5 6.5 0 0 0-3.8 11.77c.62.46 1 1.17 1.05 1.94l.02.29h5.46l.02-.29c.05-.77.43-1.48 1.05-1.94A6.5 6.5 0 0 0 16 6.5Z" fill="#fff"/>
+  <rect x="13.2" y="21.6" width="5.6" height="1.9" rx=".95" fill="#fff"/>
+  <rect x="14" y="24.4" width="4" height="1.7" rx=".85" fill="#bcd2ff"/>
+</svg>

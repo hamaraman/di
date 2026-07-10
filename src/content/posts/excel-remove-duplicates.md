@@ -40,9 +40,11 @@ draft: false
 =IF(COUNTIF($A$2:A2, A2)>1, "중복", "")
 ```
 
+여기서 쓴 `IF`처럼 조건을 여러 개 겹쳐 판단하고 싶다면 [엑셀 IF 함수 다중 조건 사용법](/posts/excel-if-multiple-conditions/)을 참고하세요.
+
 ## 엑셀 365라면: UNIQUE 함수
 
-Microsoft 365에서는 `=UNIQUE(A2:A100)` 한 줄로 중복을 뺀 고유값 목록을 바로 뽑을 수 있습니다.
+Microsoft 365에서는 `=UNIQUE(A2:A100)` 한 줄로 중복을 뺀 고유값 목록을 바로 뽑을 수 있습니다. 이렇게 뽑은 고유값 목록은 [엑셀 드롭다운 목록 만들기](/posts/excel-dropdown-list/)의 원본으로 그대로 쓰기 좋습니다.
 
 ## 자주 묻는 질문
 

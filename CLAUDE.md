@@ -20,10 +20,10 @@
 - **새 글 작성:** `npm run new "글 제목"` → `src/content/posts/*.md` 본문 작성 → `draft: false`
 - **배포:** `git push origin main` (자동 배포). CLI 직접 배포 금지.
 - **주의사항:**
-  - `astro.config.mjs` 의 `SITE.url` 과 `public/robots.txt` 의 도메인이 아직
-    `https://example.com` 플레이스홀더다. 실제 도메인 확정 시 둘 다 교체.
-  - 네이버/구글 소유확인 메타태그는 `src/layouts/BaseLayout.astro` 에 주석으로
-    대기 중. 발급받은 코드로 교체.
+  - `astro.config.mjs` 의 `SITE.url` 과 `public/robots.txt` 도메인은 실주소
+    `https://di-cnv.pages.dev` 로 반영 완료. 커스텀 도메인 구매 시 둘 다 교체.
+  - 네이버/구글 소유확인 메타태그는 `src/layouts/BaseLayout.astro` 에 삽입 완료
+    (google-site-verification / naver-site-verification).
   - 글 frontmatter 스키마(`src/content.config.ts`)가 제목·설명 길이를 강제한다.
     빌드가 스키마 에러로 실패하면 길이를 조정할 것.
 

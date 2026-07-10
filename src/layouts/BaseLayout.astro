@@ -9,6 +9,8 @@ interface Props {
   updatedDate?: Date;
   type?: 'website' | 'article';
   tags?: string[];
+  /** 공유 미리보기 이미지 경로(사이트 루트 기준). 미지정 시 기본 OG 이미지 사용 */
+  image?: string;
 }
 
 const {
@@ -18,10 +20,13 @@ const {
   updatedDate,
   type = 'website',
   tags = [],
+  image = '/og/default.png',
 } = Astro.props;
 
 // canonical URL — 중복 콘텐츠 방지, 구글/네이버 모두 중요
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+// OG 이미지 절대 URL — 카카오/페북/네이버는 절대경로를 요구
+const ogImage = new URL(image, SITE.url).toString();
 const fullTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
 
 // 구조화 데이터 (JSON-LD) — 구글 리치 결과에 반영
@@ -56,6 +61,9 @@ const jsonLd =
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- 검색엔진 소유확인 -->
     <meta name="google-site-verification" content="zzjx7eGYWw4LjTTM9dZs6pe4UpySG3WaLiv17juJXeA" />
     <meta name="naver-site-verification" content="4e04a96d19a63ff8826ffb7cf186259f4082dcb3" />
@@ -67,11 +75,15 @@ const jsonLd =
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter/X 카드 -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link
