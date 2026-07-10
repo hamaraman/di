@@ -33,3 +33,20 @@
 2. 본문 작성 후 `draft: false`
 3. `npm run build && npm run inspect` 로 점검
 4. `git push origin main` 으로 발행/배포
+
+## 보조 직원: Gemini CLI (외부 위임)
+
+Gemini 는 Claude 의 서브에이전트가 될 수 없다(서브에이전트는 Claude 모델 전용).
+대신 **Claude 가 필요할 때 호출하는 외부 도구**로 쓴다. 사용자가 Gemini Pro CLI(v0.49+)를
+인증해 두었으므로 아래처럼 비대화형으로 위임할 수 있다.
+
+```
+npm run gemini -- "여기에 프롬프트"
+```
+
+(내부적으로 `gemini --skip-trust -p "..."` 실행. --skip-trust 는 이 폴더를 신뢰 처리.)
+
+- 잘 맞는 작업: 키워드 브레인스토밍(제미나이는 구글 검색 그라운딩 강점), 제목/메타 문구 후보,
+  글 아이디어의 "제2의 의견".
+- 결과는 Claude 가 검토·정리한 뒤 반영한다(제미나이 출력을 그대로 신뢰하지 말 것).
+- 실제 파일 수정·발행은 Claude 가 한다. 제미나이는 아이디어·초안 생성까지만.

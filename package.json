@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "new": "node scripts/new-post.mjs",
-    "inspect": "node scripts/check.mjs"
+    "inspect": "node scripts/check.mjs",
+    "gemini": "gemini --skip-trust -p"
   },
   "dependencies": {
     "astro": "^5.13.0",
