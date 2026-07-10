@@ -28,7 +28,7 @@ draft: false
 
 ## 방법 3. COUNTIF로 몇 번 나왔는지 표시
 
-각 값이 몇 번 등장하는지 세거나, 중복 여부를 별도 열에 남기고 싶을 때 씁니다.
+각 값이 몇 번 등장하는지 세거나, 중복 여부를 별도 열에 남기고 싶을 때 씁니다. COUNTIF로 조건별 개수를 세고 SUMIF로 합계까지 구하는 법은 [엑셀 COUNTIF 사용법·SUMIF 조건별 합계](/posts/excel-countif-sumif/)에 정리했습니다.
 
 ```
 =COUNTIF($A$2:$A$100, A2)
