@@ -12,5 +12,18 @@
     "deny": [
       "Bash(rm -rf:*)"
     ]
+  },
+  "hooks": {
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "echo '{\"systemMessage\":\"[검증 규칙] 서브에이전트 작업 완료 — 팀장은 산출물을 직접 Read/빌드로 확인한 뒤에만 완료라고 하고, 확인 못 한 건 미확인이라고 명시할 것.\",\"hookSpecificOutput\":{\"hookEventName\":\"SubagentStop\",\"additionalContext\":\"방금 서브에이전트(직원)가 작업을 마쳤다. 그 산출물을 그대로 믿지 말고 실제 파일 Read 또는 npm run build && npm run inspect 로 직접 검증한 뒤에만 완료로 보고하라. 미검증 항목은 미확인이라고 명시.\"}}'"
+          }
+        ]
+      }
+    ]
   }
 }
