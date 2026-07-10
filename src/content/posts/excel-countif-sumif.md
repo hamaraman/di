@@ -8,6 +8,20 @@ draft: false
 
 "조건에 맞는 것만 세거나 더하고 싶다"면 COUNTIF와 SUMIF 두 함수면 충분합니다. 개수는 COUNTIF, 합계는 SUMIF로 나눠 쓴다고 기억하면 됩니다.
 
+<svg viewBox="0 0 400 120" role="img" aria-label="COUNTIF는 조건에 맞는 개수를, SUMIF는 조건에 맞는 합계를 구한다">
+  <title>COUNTIF와 SUMIF 구분</title>
+  <rect x="130" y="6" width="140" height="34" rx="6" fill="none" stroke="#3b82f6" stroke-width="1.5"></rect>
+  <text x="200" y="28" text-anchor="middle" font-size="12" fill="currentColor" font-family="system-ui">조건에 맞는 데이터</text>
+  <line x1="180" y1="40" x2="102" y2="74" stroke="#2563eb" stroke-width="2"></line>
+  <polygon points="96,70 108,72 100,81" fill="#2563eb"></polygon>
+  <line x1="220" y1="40" x2="298" y2="74" stroke="#2563eb" stroke-width="2"></line>
+  <polygon points="304,70 292,72 300,81" fill="#2563eb"></polygon>
+  <rect x="20" y="80" width="150" height="34" rx="6" fill="#2563eb"></rect>
+  <text x="95" y="102" text-anchor="middle" font-size="12" fill="#ffffff" font-family="system-ui">COUNTIF → 몇 개</text>
+  <rect x="230" y="80" width="150" height="34" rx="6" fill="#2563eb"></rect>
+  <text x="305" y="102" text-anchor="middle" font-size="12" fill="#ffffff" font-family="system-ui">SUMIF → 합이 얼마</text>
+</svg>
+
 ## 1. COUNTIF — 조건에 맞는 셀 개수 세기
 
 특정 조건을 만족하는 셀이 **몇 개인지** 셀 때 씁니다. 문법은 인수 두 개로 단순합니다.

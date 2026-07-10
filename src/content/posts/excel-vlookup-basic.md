@@ -12,6 +12,20 @@ VLOOKUP은 표에서 원하는 값을 찾아오는 함수입니다. 이름이나
 
 한 표에서 **기준이 되는 값**을 찾아, 그 값과 **같은 행에 있는 다른 열의 값**을 돌려주는 함수입니다. 예를 들어 상품 목록에서 상품코드로 가격을 찾아올 때 씁니다. 세로(열) 방향으로 값을 찾는다고 해서 V(Vertical)LOOKUP입니다.
 
+<svg viewBox="0 0 480 70" role="img" aria-label="VLOOKUP 동작 흐름: 찾을값을 표 첫 열에서 찾아 같은 행의 다른 열 값을 반환한다">
+  <title>VLOOKUP 동작 원리</title>
+  <rect x="1" y="18" width="104" height="34" rx="6" fill="#2563eb"></rect>
+  <text x="53" y="40" text-anchor="middle" font-size="12.5" fill="#ffffff" font-family="system-ui">상품코드 A2</text>
+  <line x1="107" y1="35" x2="131" y2="35" stroke="#2563eb" stroke-width="2"></line>
+  <polygon points="131,31 139,35 131,39" fill="#2563eb"></polygon>
+  <rect x="143" y="18" width="150" height="34" rx="6" fill="none" stroke="#3b82f6" stroke-width="1.5"></rect>
+  <text x="218" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="system-ui">표 첫 열에서 매칭</text>
+  <line x1="295" y1="35" x2="319" y2="35" stroke="#2563eb" stroke-width="2"></line>
+  <polygon points="319,31 327,35 319,39" fill="#2563eb"></polygon>
+  <rect x="331" y="18" width="148" height="34" rx="6" fill="none" stroke="#3b82f6" stroke-width="1.5"></rect>
+  <text x="405" y="40" text-anchor="middle" font-size="12" fill="currentColor" font-family="system-ui">같은 행 가격 반환</text>
+</svg>
+
 기본 문법은 다음과 같습니다.
 
 ```

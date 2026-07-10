@@ -36,8 +36,8 @@ const fmt = (d: Date) =>
     <Content />
     {
       post.data.tags.length > 0 && (
-        <div style="margin-top:2rem; color:var(--muted);">
-          {post.data.tags.map((t) => <span style="margin-right:.5rem;">#{t}</span>)}
+        <div style="margin-top:2rem;">
+          {post.data.tags.map((t) => <span class="tag-chip">#{t}</span>)}
         </div>
       )
     }
